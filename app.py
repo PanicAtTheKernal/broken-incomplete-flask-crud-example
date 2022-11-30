@@ -51,7 +51,7 @@ def delete():
     id = request.args.get('id')
     if id is not None:
         cur = mysql.connection.cursor()  # create a connection to the SQL instance
-        s = '''DELETE FROM Customers WHERE studentID={};'''.format(id)  
+        s = '''DELETE FROM students WHERE studentID={};'''.format(id)  
         cur.execute(s)
         mysql.connection.commit()
         response = {"Result": "Success"}
@@ -184,4 +184,4 @@ if __name__ == "__main__":
     # cur = mysql.connection.cursor()
     # cur.execute(sql.read())
     # sql.close()
-    app.run(host='0.0.0.0', port='80')  # Run the flask app at port 80
+    app.run(host='0.0.0.0', port='8080')  # Run the flask app at port 80
