@@ -47,7 +47,7 @@ def add():
         return ret
 
 @app.route("/delete")  # Delete Student
-def add():
+def delete():
     id = request.args.get('id')
     if id is not None:
         cur = mysql.connection.cursor()  # create a connection to the SQL instance
