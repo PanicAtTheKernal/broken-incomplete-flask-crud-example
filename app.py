@@ -46,6 +46,29 @@ def add():
         )
         return ret
 
+@app.route("/delete")  # Delete Student
+def add():
+    id = request.args.get('id')
+    if id is not None:
+        cur = mysql.connection.cursor()  # create a connection to the SQL instance
+        s = '''DELETE FROM Customers WHERE studentID={};'''.format(id)  
+        cur.execute(s)
+        mysql.connection.commit()
+        response = {"Result": "Success"}
+        ret = app.response_class(
+            response=json.dumps(response),
+            status=200,
+            mimetype='application/json'
+        )
+        return ret
+    else:
+        response = {"Result": "Failure"}
+        ret = app.response_class(
+            response=json.dumps(response),
+            status=400,
+            mimetype='application/json'
+        )
+        return ret
 
 @app.route("/")  # Default - Show Data
 def read():  # Name of the method
